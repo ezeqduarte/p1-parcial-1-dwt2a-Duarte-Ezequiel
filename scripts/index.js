@@ -93,44 +93,52 @@ function Mostrar() {
 
   if (discosAmostrar.length > 0) {
     discosAmostrar.forEach((disco) => {
-        const duracionTotal = calcularDuracionTotal(disco);
-        const cantidadPistas = disco.Pistas.length;
-        const promedioDuracion = calcularPromedioDuracion(disco.Pistas);
-        const pistaMayorDuracion = encontrarPistaMayorDuracion(disco.Pistas);
-        const pistasHtml = disco.Pistas.map((pista) => {
-          return `${
-            pista.Duracion > 180
-              ? `<h5 class='text-danger'>- ${pista.Nombre}, ${pista.Duracion} segundos</h5>`
-              : `<h5>- ${pista.Nombre}, ${pista.Duracion} segundos</h5>`
-          }`;
-        }).join("");
-    
-        divDiscos.innerHTML += `
+      const duracionTotal = calcularDuracionTotal(disco);
+      const cantidadPistas = disco.Pistas.length;
+      const promedioDuracion = calcularPromedioDuracion(disco.Pistas);
+      const pistaMayorDuracion = encontrarPistaMayorDuracion(disco.Pistas);
+      const pistasHtml = disco.Pistas.map((pista) => {
+        return `${
+          pista.Duracion > 180
+            ? `<h5 class='text-danger'>- ${pista.Nombre}, ${pista.Duracion} segundos</h5>`
+            : `<h5>- ${pista.Nombre}, ${pista.Duracion} segundos</h5>`
+        }`;
+      }).join("");
+
+      divDiscos.innerHTML += `
             <div class="card">
               <img src="https://tse3.mm.bing.net/th?id=OIP.TA0vM3JUwH1m5RN0spoI4QHaE8&pid=Api&P=0&h=180" class="card-img-top" alt="foto-disco">
               <div class="card-body">
-                  <h4 class="card-title text-center fs-3 text-bold">${disco.Nombre}</h4>
-                  <h5 class="card-title"><span class='fw-bold fs-4'>Autor:</span> ${disco.Autor}</h5>
-                  <h5 class="card-title"><span class='fw-bold fs-4'>Codigo:</span> ${disco.Codigo}</h5>
+                  <h4 class="card-title text-center fs-3 text-bold">${
+                    disco.Nombre
+                  }</h4>
+                  <h5 class="card-title"><span class='fw-bold fs-4'>Autor:</span> ${
+                    disco.Autor
+                  }</h5>
+                  <h5 class="card-title"><span class='fw-bold fs-4'>Codigo:</span> ${
+                    disco.Codigo
+                  }</h5>
                   <h5 class="card-title"><span class='fw-bold fs-4'>Pistas:</span></h5>
                   ${pistasHtml}
                   <h5 class="card-title"><span class='fw-bold fs-4'>Cantidad de pistas:</span> ${cantidadPistas}</h5>
                   <h5 class="card-title"><span class='fw-bold fs-4'>Duracion total del disco:</span> ${duracionTotal} segundos.</h5>
-                  <h5 class="card-title"><span class='fw-bold fs-4'>Promedio de duración:</span> ${promedioDuracion.toFixed(2)} segundos</h5>
-                  <h5 class="card-title"><span class='fw-bold fs-4'>Pista con mayor duración:</span> ${pistaMayorDuracion.Nombre}, ${pistaMayorDuracion.Duracion} segundos</h5>
+                  <h5 class="card-title"><span class='fw-bold fs-4'>Promedio de duración:</span> ${promedioDuracion.toFixed(
+                    2
+                  )} segundos</h5>
+                  <h5 class="card-title"><span class='fw-bold fs-4'>Pista con mayor duración:</span> ${
+                    pistaMayorDuracion.Nombre
+                  }, ${pistaMayorDuracion.Duracion} segundos</h5>
               </div>
               <p class='fw-bold fs-5 px-3'>*En rojo pistas mayores a 180 segundos.</p>
             </div>
           `;
-      });
+    });
   } else {
     informacion.innerHTML = `<p class='contador'>${contadorDiscos} discos cargados.</p>
     <div class='disco-encontrado'>
       <h2>No posees discos cargados. Por favor agrega nuevos discos a la biblioteca para verlos.</h2>
     </div>`;
   }
-
-  
 }
 
 // Función para agregar un disco al arreglo de discos y almacenamiento local
@@ -213,15 +221,25 @@ function filtroPorCodigo() {
           <div class="card">
             <img src="https://tse3.mm.bing.net/th?id=OIP.TA0vM3JUwH1m5RN0spoI4QHaE8&pid=Api&P=0&h=180" class="card-img-top" alt="foto-disco">
             <div class="card-body">
-              <h4 class="card-title text-center fs-3 text-bold">${discoEncontrado.Nombre}</h4>
-              <h5 class="card-title"><span class='fw-bold fs-4'>Autor:</span> ${discoEncontrado.Autor}</h5>
-              <h5 class="card-title"><span class='fw-bold fs-4'>Codigo:</span> ${discoEncontrado.Codigo}</h5>
+              <h4 class="card-title text-center fs-3 text-bold">${
+                discoEncontrado.Nombre
+              }</h4>
+              <h5 class="card-title"><span class='fw-bold fs-4'>Autor:</span> ${
+                discoEncontrado.Autor
+              }</h5>
+              <h5 class="card-title"><span class='fw-bold fs-4'>Codigo:</span> ${
+                discoEncontrado.Codigo
+              }</h5>
               <h5 class="card-title"><span class='fw-bold fs-4'>Pistas:</span></h5>
               ${pistasHtml}
               <h5 class="card-title"><span class='fw-bold fs-4'>Cantidad de pistas:</span> ${cantidadPistas}</h5>
               <h5 class="card-title"><span class='fw-bold fs-4'>Duracion total del disco:</span> ${duracionTotal} segundos.</h5>
-              <h5 class="card-title"><span class='fw-bold fs-4'>Promedio de duración:</span> ${promedioDuracion.toFixed(2)} segundos</h5>
-              <h5 class="card-title"><span class='fw-bold fs-4'>Pista con mayor duración:</span> ${pistaMayorDuracion.Nombre}, ${pistaMayorDuracion.Duracion} segundos</h5>
+              <h5 class="card-title"><span class='fw-bold fs-4'>Promedio de duración:</span> ${promedioDuracion.toFixed(
+                2
+              )} segundos</h5>
+              <h5 class="card-title"><span class='fw-bold fs-4'>Pista con mayor duración:</span> ${
+                pistaMayorDuracion.Nombre
+              }, ${pistaMayorDuracion.Duracion} segundos</h5>
             </div>
             <p class='fw-bold fs-5 px-3'>*En rojo pistas mayores a 180 segundos.</p>
           </div>
@@ -242,4 +260,3 @@ function filtroPorCodigo() {
 
 // Inicializar la lista de discos
 getDiscos();
-
