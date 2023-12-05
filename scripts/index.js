@@ -15,9 +15,29 @@ function getDiscos() {
 
 // Función para cargar un nuevo disco
 function Cargar() {
-  let nombreDisco = prompt("Nombre del disco:");
-  let autorDisco = prompt("Autor o banda del disco:");
+  let nombreDisco 
+  let autorDisco
   let codigoDisco;
+
+  // Validación del nombre del disco
+  while (true) {
+    nombreDisco = prompt("Nombre del disco:");
+    if (!nombreDisco) {
+      alert("El nombre del disco no puede quedar vacío.");
+    } else {
+      break;
+    }
+  }
+
+  // Validación del nombre del autor
+  while (true) {
+    autorDisco = prompt("Autor o banda del disco:");
+    if (!autorDisco) {
+      alert("El nombre del autor no puede quedar vacío.");
+    } else {
+      break;
+    }
+  }
 
   // Validación del código único del disco
   while (true) {
